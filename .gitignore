@@ -1,0 +1,19 @@
+# secrets and local config
+.env
+*.sqlite3
+# raw NISR microdata and generated data: check NISR redistribution terms before committing anything from data/
+data/raw/
+data/processed/
+Microdata/
+Microdata_SAS2023/
+Dataset/
+*.dta
+*.sav
+# python / node
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+dist/
+
+data/source/
