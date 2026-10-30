@@ -21,14 +21,17 @@ BAD_LOGIN = 'Email or password is not correct.'
 
 
 class CsrfView(APIView):
-    """Sets the csrftoken cookie; the frontend sends it back in the X-CSRFToken header on unsafe requests."""
+    """Provides a CSRF token for frontend requests."""
     permission_classes = [AllowAny]
     authentication_classes = []
 
     @extend_schema(responses=Detail)
     def get(self, request):
-        get_token(request)
-        return Response({'detail': 'CSRF cookie set.'})
+        csrf_token = get_token(request)
+        return Response({
+            'detail': 'CSRF token generated.',
+            'csrfToken': csrf_token,
+        })
 
 
 class RegisterView(generics.GenericAPIView):

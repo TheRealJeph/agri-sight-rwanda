@@ -30,7 +30,14 @@ export interface AuthUser {
   preferences: UserPreferences;
 }
 
-export interface Detail { detail: string }
+export interface Detail {
+  detail: string;
+}
+
+export interface CsrfResponse {
+  detail: string;
+  csrfToken: string;
+}
 export interface LoginPayload { email: string; password: string }
 export interface RegisterPayload {
   full_name: string; email: string; phone: string; organization: string; occupation: Occupation;
