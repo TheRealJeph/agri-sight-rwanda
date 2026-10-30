@@ -1,0 +1,91 @@
+year,season,step,rows_before,rows_after,note
+2023,A,join crop area from Screening,39038,39038,matched 99.5% (name-level 99.3%)
+2023,A,standardise stratum,39038,39038,all mapped
+2023,A,drop duplicates,39038,39038,"key: segment, farmer, plot, crop"
+2023,A,flag: flag_missing_area,39038,38838,200 rows flagged
+2023,A,flag: flag_missing_harvest,39038,34227,4811 rows flagged
+2023,A,flag: flag_zero_harvest,39038,37881,1157 rows flagged
+2023,A,flag: flag_missing_weight,39038,39038,0 rows flagged
+2023,A,flag: flag_mostly_expected,39038,30387,8651 rows flagged
+2023,A,flag: flag_outlier,39038,38867,171 rows flagged
+2023,A,analysis_ready,39038,31732,"valid area, harvest, weight, core crop"
+2023,B,join crop area from Screening,36546,36546,matched 100.0% (name-level 99.8%)
+2023,B,standardise stratum,36546,36546,all mapped
+2023,B,drop duplicates,36546,36545,"key: segment, farmer, plot, crop"
+2023,B,flag: flag_missing_area,36545,36545,0 rows flagged
+2023,B,flag: flag_missing_harvest,36545,35322,1223 rows flagged
+2023,B,flag: flag_zero_harvest,36545,35972,573 rows flagged
+2023,B,flag: flag_missing_weight,36545,36545,0 rows flagged
+2023,B,flag: flag_mostly_expected,36545,19033,17512 rows flagged
+2023,B,flag: flag_outlier,36545,36449,96 rows flagged
+2023,B,analysis_ready,36545,32516,"valid area, harvest, weight, core crop"
+2023,C,load (Season C layout),3566,3566,area = Harvested_Area; weight = weight_plot; no practice columns
+2023,C,standardise stratum,3566,3566,all mapped
+2023,C,drop duplicates,3566,3566,"key: segment, farmer, plot, crop"
+2023,C,flag: flag_missing_area,3566,3566,0 rows flagged
+2023,C,flag: flag_missing_harvest,3566,3566,0 rows flagged
+2023,C,flag: flag_zero_harvest,3566,3522,44 rows flagged
+2023,C,flag: flag_missing_weight,3566,3566,0 rows flagged
+2023,C,flag: flag_mostly_expected,3566,2116,1450 rows flagged
+2023,C,flag: flag_outlier,3566,3561,5 rows flagged
+2023,C,analysis_ready,3566,3522,"valid area, harvest, weight, core crop"
+2024,A,join crop area from Screening,39330,39330,matched 98.8%
+2024,A,standardise stratum,39330,39330,all mapped
+2024,A,drop duplicates,39330,39330,"key: segment, farmer, plot, crop"
+2024,A,flag: flag_missing_area,39330,38856,474 rows flagged
+2024,A,flag: flag_missing_harvest,39330,34349,4981 rows flagged
+2024,A,flag: flag_zero_harvest,39330,39330,0 rows flagged
+2024,A,flag: flag_missing_weight,39330,39330,0 rows flagged
+2024,A,flag: flag_mostly_expected,39330,33227,6103 rows flagged
+2024,A,flag: flag_outlier,39330,39285,45 rows flagged
+2024,A,analysis_ready,39330,32884,"valid area, harvest, weight, core crop"
+2024,B,join crop area from Screening,35584,35584,matched 43.0%
+2024,B,standardise stratum,35584,35584,all mapped
+2024,B,drop duplicates,35584,35584,"key: segment, farmer, plot, crop"
+2024,B,flag: flag_missing_area,35584,15303,20281 rows flagged
+2024,B,flag: flag_missing_harvest,35584,34679,905 rows flagged
+2024,B,flag: flag_zero_harvest,35584,35579,5 rows flagged
+2024,B,flag: flag_missing_weight,35584,35584,0 rows flagged
+2024,B,flag: flag_mostly_expected,35584,27874,7710 rows flagged
+2024,B,flag: flag_outlier,35584,35508,76 rows flagged
+2024,B,analysis_ready,35584,13752,"valid area, harvest, weight, core crop"
+2024,C,join crop area from Screening,1949,1949,matched 100.0%
+2024,C,standardise stratum,1949,1949,all mapped
+2024,C,drop duplicates,1949,1949,"key: segment, farmer, plot, crop"
+2024,C,flag: flag_missing_area,1949,1949,0 rows flagged
+2024,C,flag: flag_missing_harvest,1949,1949,0 rows flagged
+2024,C,flag: flag_zero_harvest,1949,1949,0 rows flagged
+2024,C,flag: flag_missing_weight,1949,1949,0 rows flagged
+2024,C,flag: flag_mostly_expected,1949,1037,912 rows flagged
+2024,C,flag: flag_outlier,1949,1947,2 rows flagged
+2024,C,analysis_ready,1949,1947,"valid area, harvest, weight, core crop"
+2025,A,load,34369,34369,Crop_Area_ha provided in file
+2025,A,standardise stratum,34369,34369,all mapped
+2025,A,drop duplicates,34369,34369,"key: segment, farmer, plot, crop"
+2025,A,flag: flag_missing_area,34369,34368,1 rows flagged
+2025,A,flag: flag_missing_harvest,34369,29941,4428 rows flagged
+2025,A,flag: flag_zero_harvest,34369,34369,0 rows flagged
+2025,A,flag: flag_missing_weight,34369,34369,0 rows flagged
+2025,A,flag: flag_mostly_expected,34369,25351,9018 rows flagged
+2025,A,flag: flag_outlier,34369,34292,77 rows flagged
+2025,A,analysis_ready,34369,28909,"valid area, harvest, weight, core crop"
+2025,B,load,32920,32920,Crop_Area_ha provided in file
+2025,B,standardise stratum,32920,32920,all mapped
+2025,B,drop duplicates,32920,32920,"key: segment, farmer, plot, crop"
+2025,B,flag: flag_missing_area,32920,32920,0 rows flagged
+2025,B,flag: flag_missing_harvest,32920,31970,950 rows flagged
+2025,B,flag: flag_zero_harvest,32920,32920,0 rows flagged
+2025,B,flag: flag_missing_weight,32920,32920,0 rows flagged
+2025,B,flag: flag_mostly_expected,32920,14865,18055 rows flagged
+2025,B,flag: flag_outlier,32920,32810,110 rows flagged
+2025,B,analysis_ready,32920,29737,"valid area, harvest, weight, core crop"
+2025,C,load,1884,1884,Crop_Area_ha provided in file
+2025,C,standardise stratum,1884,1884,all mapped
+2025,C,drop duplicates,1884,1884,"key: segment, farmer, plot, crop"
+2025,C,flag: flag_missing_area,1884,1884,0 rows flagged
+2025,C,flag: flag_missing_harvest,1884,1884,0 rows flagged
+2025,C,flag: flag_zero_harvest,1884,1883,1 rows flagged
+2025,C,flag: flag_missing_weight,1884,1884,0 rows flagged
+2025,C,flag: flag_mostly_expected,1884,714,1170 rows flagged
+2025,C,flag: flag_outlier,1884,1868,16 rows flagged
+2025,C,analysis_ready,1884,1883,"valid area, harvest, weight, core crop"
