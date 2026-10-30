@@ -7,3 +7,5 @@ python-dotenv>=1.0
 pandas>=2.2
 numpy>=1.26
 scipy>=1.13
+gunicorn
+whitenoise
