@@ -7,7 +7,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-DATA_DIR = settings.BASE_DIR.parent / "data" / "processed"
+DATA_DIR = settings.BASE_DIR / "data" / "processed"
 SUMMARY_FILE = DATA_DIR / "district_crop_season_year.csv"
 ALL_SEASONS_FILE = DATA_DIR / "district_crop_year_all_seasons.csv"
 QUALITY_FILE = DATA_DIR / "data_quality_report.csv"
@@ -31,7 +31,7 @@ def _number(row, key, default=0.0):
 
 
 class DashboardDataView(APIView):
-    """Read-only analytics over the user's cleaned NISR 2023–2025 files."""
+    """Read-only analytics over the user's cleaned NISR 2023â€“2025 files."""
     permission_classes = [AllowAny]
     authentication_classes = []
 
@@ -97,7 +97,7 @@ class DashboardDataView(APIView):
 
         return Response({
             "source": "NISR Seasonal Agricultural Survey; user-provided cleaned files",
-            "period": f"{min(years)}–{max(years)}",
+            "period": f"{min(years)}â€“{max(years)}",
             "filters": {"years": years, "seasons": seasons, "crops": crops, "districts": districts, "provinces": provinces},
             "summary": {
                 "district_crop_rows": len(filtered),
@@ -130,4 +130,4 @@ class DatasetInfoView(APIView):
         for name in ("district_crop_season_year.csv", "district_crop_year_all_seasons.csv", "plot_crop_clean_2023_2025.csv", "data_quality_report.csv"):
             path = DATA_DIR / name
             files.append({"name": name, "available": path.exists(), "bytes": path.stat().st_size if path.exists() else 0})
-        return Response({"source": "NISR Seasonal Agricultural Survey", "period": "2023–2025", "files": files})
+        return Response({"source": "NISR Seasonal Agricultural Survey", "period": "2023â€“2025", "files": files})
