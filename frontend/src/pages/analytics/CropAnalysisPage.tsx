@@ -1,5 +1,6 @@
 
 import { useEffect, useState } from 'react';
+import { api } from '../../api/client';
 import { Link } from 'react-router-dom';
 import {
   BarChart3,
@@ -65,18 +66,11 @@ export default function CropAnalysisPage() {
 
     try {
       const params = new URLSearchParams({ year, season, district });
-      const response = await fetch(
-        `/api/v1/analytics/dashboard/?${params.toString()}`
-      );
+      const { data: result } = await api.get<DashboardData>(
+  `/analytics/dashboard/?${params.toString()}`
+);
 
-      if (!response.ok) {
-        throw new Error(
-          `Analytics API returned ${response.status}. Check that Django is running.`
-        );
-      }
-
-      const result: DashboardData = await response.json();
-      setData(result);
+setData(result);
     } catch (err) {
       setError(
         err instanceof Error

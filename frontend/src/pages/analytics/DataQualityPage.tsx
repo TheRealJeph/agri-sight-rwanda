@@ -16,6 +16,7 @@ import {
   AlertCircle,
   X,
 } from 'lucide-react';
+import { api } from '../../api/client';
 
 type DashboardQualityData = {
   summary?: {
@@ -84,25 +85,12 @@ export default function DataQualityPage() {
 
     try {
       const [dashboardResponse, datasetsResponse] = await Promise.all([
-        fetch('/api/v1/analytics/dashboard/'),
-        fetch('/api/v1/analytics/datasets/'),
+        api.get<DashboardQualityData>('/analytics/dashboard/'),
+        api.get<DatasetInfo>('/analytics/datasets/'),
       ]);
 
-      if (!dashboardResponse.ok) {
-        throw new Error(
-          `Dashboard data service returned ${dashboardResponse.status}.`
-        );
-      }
-
-      if (!datasetsResponse.ok) {
-        throw new Error(
-          `Dataset information service returned ${datasetsResponse.status}.`
-        );
-      }
-
-      const dashboardResult: DashboardQualityData =
-        await dashboardResponse.json();
-      const datasetsResult: DatasetInfo = await datasetsResponse.json();
+      const dashboardResult = dashboardResponse.data;
+      const datasetsResult = datasetsResponse.data;
 
       setDashboard(dashboardResult);
       setDatasets(datasetsResult);

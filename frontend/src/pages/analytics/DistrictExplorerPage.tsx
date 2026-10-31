@@ -1,5 +1,6 @@
 
 import { useEffect, useState } from 'react';
+import { api } from '../../api/client';
 import { Link, useLocation } from 'react-router-dom';
 import {
   BarChart3,
@@ -76,18 +77,11 @@ export default function DistrictExplorerPage() {
         district: 'all',
       });
 
-      const response = await fetch(
-        `/api/v1/analytics/dashboard/?${params.toString()}`
-      );
+      const { data: result } = await api.get<DashboardPayload>(
+  `/analytics/dashboard/?${params.toString()}`
+);
 
-      if (!response.ok) {
-        throw new Error(
-          `Data service returned ${response.status}. Check the Django backend.`
-        );
-      }
-
-      const result: DashboardPayload = await response.json();
-      setData(result);
+setData(result);
     } catch (err) {
       setError(
         err instanceof Error
