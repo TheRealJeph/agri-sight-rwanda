@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { BarChart3, Bell, ChevronDown, CircleHelp, Download, Filter, Home, Leaf, MapPinned, Menu, Search, Settings, Sprout, UserRound, X, Database, RefreshCw, TrendingDown, TrendingUp, Wheat } from 'lucide-react';
 import { Bar, BarChart, CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { useAuth } from '../../hooks/useAuth';
+import { api } from '../../api/client';
 
 type Row = { crop:string; district:string; province:string; yield:number; records:number; reliable:boolean };
 type Payload = { source:string; period:string; filters:{years:number[];seasons:string[];crops:string[];districts:string[];provinces:string[]}; summary:{district_crop_rows:number;reliable_rows:number;average_yield_kg_ha:number;national_reference_yield_kg_ha:number;farmer_observations:number;plot_records:number;districts_covered:number;crops_covered:number};by_year:{year:string;yield:number;districts:number}[];by_crop:{crop:string;yield:number;records:number}[];districts_lowest_yield:{district:string;province:string;yield:number;records:number}[];districts_highest_yield:{district:string;province:string;yield:number;records:number}[];latest_year_crop_district:Row[]};
@@ -12,7 +13,27 @@ export default function DashboardPage(){
  const location = useLocation();
  const [data,setData]=useState<Payload|null>(null); const [error,setError]=useState(''); const [loading,setLoading]=useState(true);
  const [year,setYear]=useState('all'); const [season,setSeason]=useState('all'); const [crop,setCrop]=useState('all'); const [district,setDistrict]=useState('all'); const [query,setQuery]=useState(''); const [mobileNav,setMobileNav]=useState(false); const [profileMenuOpen, setProfileMenuOpen] = useState(false);
- async function load(){setLoading(true);setError('');try{const params=new URLSearchParams({year,season,crop,district});const res=await fetch(`/api/v1/analytics/dashboard/?${params}`);if(!res.ok)throw new Error(`Data service returned ${res.status}. Start the Django backend and check data/processed.`);setData(await res.json());}catch(e){setError(e instanceof Error?e.message:'Could not load the NISR dataset.');}finally{setLoading(false);}}
+ async function load() {
+  setLoading(true);
+  setError('');
+
+  try {
+    const params = new URLSearchParams({ year, season, crop, district });
+    const { data } = await api.get<Payload>(
+      `/analytics/dashboard/?${params.toString()}`
+    );
+
+    setData(data);
+  } catch (e) {
+    setError(
+      e instanceof Error
+        ? e.message
+        : 'Could not load the NISR dataset.'
+    );
+  } finally {
+    setLoading(false);
+  }
+}
  useEffect(()=>{void load();},[year,season,crop,district]);
  const tableRows=useMemo(()=>{const rows=data?.latest_year_crop_district??[];return rows.filter(r=>(district==='all'||r.district===district)&&(crop==='all'||r.crop===crop)&&`${r.district} ${r.crop} ${r.province}`.toLowerCase().includes(query.toLowerCase())).slice(0,12)},[data,query,district,crop]);
  function exportCsv(){const rows=data?.latest_year_crop_district??[];const head='crop,district,province,yield_kg_ha,records,reliable';const body=rows.map(r=>[r.crop,r.district,r.province,r.yield,r.records,r.reliable].map(v=>`"${String(v).replaceAll('"','""')}"`).join(',')).join('\n');const blob=new Blob([head+'\n'+body],{type:'text/csv;charset=utf-8;'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='agri-sight-nisr-dashboard.csv';a.click();URL.revokeObjectURL(url);}
