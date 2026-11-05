@@ -1,6 +1,20 @@
 # Agri-Sight Rwanda — NISR Big Data Hackathon 2026
 
-Agricultural productivity intelligence dashboard for Track 1. Frontend: React + TypeScript + Vite. Backend: Django REST Framework. Dashboard indicators are computed from the supplied cleaned NISR files in `data/processed/`.
+Our project is called Agri-Sight Rwanda, and our slogan is Better data. Stronger agriculture.
+
+Agri-Sight Rwanda is a web-based agricultural data analytics and decision-support platform developed to help stakeholders better understand agricultural productivity across Rwanda.
+
+We identified a challenge: agricultural data can contain valuable information, but accessing, comparing, and interpreting that information is not always easy. Agricultural planners and researchers need to understand differences between districts, crops, seasons, and years before making informed decisions.
+
+To address this challenge, we developed Agri-Sight Rwanda using data from the National Institute of Statistics of Rwanda's Seasonal Agricultural Survey covering 2023 to 2025.
+
+Our platform transforms cleaned agricultural data into interactive visualizations and analytical insights. Users can explore agricultural performance, compare districts, analyze crops and seasons, examine historical patterns, and assess data quality.
+
+The project aligns with Track 1 of the Big Data Hackathon because it uses data and technology to support agricultural productivity. By making agricultural information more accessible and easier to interpret, we aim to support evidence-based planning and help stakeholders identify areas that may require further investigation and intervention.
+
+Our vision is to make agricultural data more useful for the people making decisions that affect Rwanda's agricultural future.
+
+Agri-Sight Rwanda: Better data. Stronger agriculture. Frontend: React + TypeScript + Vite. Backend: Django REST Framework. Dashboard indicators are computed from the supplied cleaned NISR files in `data/processed/`.
 
 ## Included
 
